@@ -1,0 +1,42 @@
+{
+  "name": "urequire-rc-import",
+  "description": "uRequire ResourceConverter, imports a module's *exported keys* as *variables* in all other modules.",
+  "version": "0.1.0",
+  "homepage": "http://uRequire.org",
+  "author": {
+    "name": "Agelos Pikoulas",
+    "email": "agelos.pikoulas@gmail.com"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/mit-license.php"
+    }
+  ],
+  "keywords": [
+    "urequire",
+    "import",
+    "export",
+    "keys",
+    "modules",
+    "variables",
+    "resource",
+    "converter"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/anodynos/urequire-rc-import"
+  },
+  "bugs": {
+    "url": "http://github.com/anodynos/urequire-rc-import/issues",
+    "email": "agelos.pikoulas@gmail.com"
+  },
+  "main": "./source/code/urequire-rc-import.coffee",
+  "preferGlobal": false,
+  "engines": {
+    "node": "0.10.x"
+  },
+  "dependencies": {
+    "lodash": "*"
+  }
+}
