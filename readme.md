@@ -1,10 +1,10 @@
-# urequire-rc-teacup-js2html
+# urequire-rc-import
 
 ## Introduction
 
 [uRequire](http://urequire.org) [ResourceConverter](http://urequire.org/resourceconverters.coffee) that imports a module's *exported keys* as *variables* in all other modules.
 
-# Install
+## Install
 
 You 'll need uRequire >= '0.7.0' in your project, then:
 
@@ -12,9 +12,9 @@ You 'll need uRequire >= '0.7.0' in your project, then:
 $ npm install urequire-rc-import --save
 ```
 
-# Usage
+## Usage
 
-Assume module defined in 'helpers/specHelpers.js' exports some keys, eg:
+Assume the module defined in `'helpers/specHelpers.js'` exports some keys, eg:
 
 ```javascript
     module.exports = {
@@ -39,10 +39,12 @@ and you just want to **import** some of its **exported keys** (eg `equals`, `som
 in each module, then you should use this :
 
 ```
-    [ 'import', {'helpers/specHelpers': ['equals', 'deepEquals', 'someProp']} ]
+    [ 'import', {
+        'helpers/specHelpers': ['equals', 'deepEquals', 'someProp']
+       }]
 ```
 
-that looks up the `import` RC and passes the options {} which has:
+that looks up the urequire-rc-`import` RC and passes the options `{}` which has:
 
     * each *module* you want to import from, eg  `'helpers/specHelpers'`
 
@@ -55,13 +57,18 @@ The variables will be imported to all bundle modules, except the one exporting.
 If you want to change the name of the variables in the importing modules, for example use `eq` instead of `equals`, the use this:
 
 ```
-    [ 'import', {'helpers/specHelpers': [ ['equals', 'eq'], 'deepEquals', 'someProp'] } ]
+    [ 'import', {
+        'helpers/specHelpers': [ ['equals', 'eq'], 'deepEquals', 'someProp'] } ]
 ```
 
 or the equivalent (more verbose):
 
 ```
-    [ 'import', {'helpers/specHelpers': { 'equals':'eq', 'deepEquals': 'deepEquals' , 'someProp': 'someProp'} } ];
+    [ 'import', {
+        'helpers/specHelpers': {
+            equals:'eq',
+            deepEquals: 'deepEquals',
+            someProp: 'someProp' } } ];
 ```
 
 ## Controlling which modules have these imports
