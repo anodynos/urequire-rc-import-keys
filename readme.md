@@ -4,11 +4,11 @@
 
 [uRequire](http://urequire.org) [ResourceConverter](http://urequire.org/resourceconverters.coffee) that imports a module's *exported keys* as *variables* in all other modules.
 
-The module whose keys are imported can both be part of your bundle (eg `models/Person') or a local dependency (eg `lodash`).
+The module whose keys are imported can both be part of your bundle (eg `models/Person`) or a local dependency (eg `lodash`).
 
 ## Install
 
-You 'll need uRequire >= '0.7.0' in your project, then:
+You 'll need [uRequire](http://urequire.org) >= '0.7.0' in your project, then:
 
 ```
 $ npm install urequire-rc-import-keys --save
@@ -65,7 +65,7 @@ If you want to change the name of the variables in the importing modules, for ex
         'helpers/specHelpers': [ ['equals', 'eq'], 'deepEquals', 'someProp'] } ]
 ```
 
-or the equivalent **(but more verbose cause you need corresponding variable for all keys, unless you're in coffee-script :-)** :
+or the equivalent _(but more verbose cause you need corresponding variable for all keys, unless you're in coffee-script :-)_ :
 
 ```
     [ 'import-keys', {
@@ -81,6 +81,10 @@ If you want to control which modules get the imported vars, use the `filez` RC l
 
     [ 'import-keys', ['only/these/modules/*'],
         {'helpers/specHelpers': [ 'equals', 'deepEquals', 'someProp'] } ]
+
+## Examples
+
+Check http:/github.com/anodynos/urequire-example & http:/github.com/anodynos/uberscore for subtle examples.
 
 ## License
 
