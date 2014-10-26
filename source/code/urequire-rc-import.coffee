@@ -1,14 +1,16 @@
 _ = require 'lodash'
 
 module.exports = [
-  '+import'
+  '+import-keys'
 
   ['**/*.js']
 
   (m)->
     for moduleName, importedKeyVars of @options when moduleName isnt m.path
       if _.isEmpty(depVariable = m.bundle.all_depsVars[moduleName]?[0])
-        throw new Error "Import error: Module '#{moduleName}' has no associated variable in depsVars. Declare it in `dependencies: xxx:`"
+        throw new Error """"
+          `urequire-rc-import-keys` error: Module '#{moduleName}' has no associated variable in depsVars.
+           Declare it in `bundle.dependencies: xxx:`"""
       else
         if not _.isEmpty importedKeyVars
           m.mergedCode = '' if not m.mergedCode

@@ -1,15 +1,17 @@
-# urequire-rc-import
+# urequire-rc-import-keys
 
 ## Introduction
 
 [uRequire](http://urequire.org) [ResourceConverter](http://urequire.org/resourceconverters.coffee) that imports a module's *exported keys* as *variables* in all other modules.
+
+The module whose keys are imported can both be part of your bundle (eg `models/Person') or a local dependency (eg `lodash`).
 
 ## Install
 
 You 'll need uRequire >= '0.7.0' in your project, then:
 
 ```
-$ npm install urequire-rc-import --save
+$ npm install urequire-rc-import-keys --save
 ```
 
 ## Usage
@@ -25,10 +27,10 @@ Assume the module defined in `'helpers/specHelpers.js'` exports some keys, eg:
     }
 ```
 
-and is available in you modules either manually (i.e `var spH = require('../helpers/specHelpers')`) or declaratively in your uRequire config, eg
+and is available in your modules either manually (i.e `var spH = require('../helpers/specHelpers')`) or declaratively in your uRequire config, eg
 
 ```
-  dependencies: exports: bundle : 'helpers/specHelpers': 'spH'
+  dependencies: imports : 'helpers/specHelpers': 'spH'
 ```
 
 and you just want to **import** some of its **exported keys** (eg `equals`, `someProp` etc) as **local variables** to all other modules, without having to :
@@ -36,35 +38,37 @@ and you just want to **import** some of its **exported keys** (eg `equals`, `som
 ```
     var equals = spH.equals, deepEquals = spH.deepEquals, someProp = spH.someProp;
 ```
+
 in each module, then you should use this :
 
+
 ```
-    [ 'import', {
+    [ 'import-keys', {
         'helpers/specHelpers': ['equals', 'deepEquals', 'someProp']
        }]
 ```
 
-that looks up the urequire-rc-`import` RC and passes the options `{}` which has:
+that looks up and loads the urequire-rc-`import-keys` RC and passes the options `{}` which has:
 
-    * each *module* you want to import from, eg  `'helpers/specHelpers'`
+    * each *module* you want to import from, eg `'helpers/specHelpers'`
 
-    * the corresponding names of the exported keys (and corresponding local variables) you want to import.
+    * the names of the exported keys (and corresponding local variables) you want to import.
 
-The variables will be imported to all bundle modules, except the one exporting.
+The variables will be imported to all bundle modules, except the one exporting (if its part of your bundle).
 
 ## Different variable names
 
-If you want to change the name of the variables in the importing modules, for example use `eq` instead of `equals`, the use this:
+If you want to change the name of the variables in the importing modules, for example use `eq` instead of `equals`, the use this syntax:
 
 ```
-    [ 'import', {
+    [ 'import-keys', {
         'helpers/specHelpers': [ ['equals', 'eq'], 'deepEquals', 'someProp'] } ]
 ```
 
-or the equivalent (more verbose):
+or the equivalent **(but more verbose cause you need corresponding variable for all keys, unless you're in coffee-script :-)** :
 
 ```
-    [ 'import', {
+    [ 'import-keys', {
         'helpers/specHelpers': {
             equals:'eq',
             deepEquals: 'deepEquals',
@@ -73,9 +77,9 @@ or the equivalent (more verbose):
 
 ## Controlling which modules have these imports
 
-If you want to control which modules get the imported vars, use the filez RC lookup syntax :
+If you want to control which modules get the imported vars, use the `filez` RC lookup syntax :
 
-    [ 'import', ['only/these/modules/*'],
+    [ 'import-keys', ['only/these/modules/*'],
         {'helpers/specHelpers': [ 'equals', 'deepEquals', 'someProp'] } ]
 
 ## License

@@ -1,6 +1,6 @@
 {
-  "name": "urequire-rc-import",
-  "description": "uRequire ResourceConverter, imports a module's *exported keys* as *variables* in all other modules.",
+  "name": "urequire-rc-import-keys",
+  "description": "Imports a module's *exported keys* as *variables* in all other modules.",
   "version": "0.1.0",
   "homepage": "http://uRequire.org",
   "author": {
@@ -25,16 +25,19 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/anodynos/urequire-rc-import"
+    "url": "git://github.com/anodynos/urequire-rc-import-keys"
   },
   "bugs": {
-    "url": "http://github.com/anodynos/urequire-rc-import/issues",
+    "url": "http://github.com/anodynos/urequire-rc-import-keys/issues",
     "email": "agelos.pikoulas@gmail.com"
   },
-  "main": "./source/code/urequire-rc-import.coffee",
+  "main": "./source/code/urequire-rc-import-keys.coffee",
   "preferGlobal": false,
   "engines": {
     "node": "0.10.x"
+  },
+  "peerDependencies": {
+    "urequire": "~0.7.0"
   },
   "dependencies": {
     "lodash": "*"
