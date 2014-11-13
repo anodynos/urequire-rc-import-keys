@@ -30,7 +30,7 @@ Assume the module defined in `'helpers/specHelpers.js'` exports some keys, eg:
 and is available in your modules either manually (i.e `var spH = require('../helpers/specHelpers')`) or declaratively in your uRequire config, eg
 
 ```
-  dependencies: imports : 'helpers/specHelpers': 'spH'
+  dependencies: imports : {'helpers/specHelpers': 'spH'}
 ```
 
 and you just want to **import** some of its **exported keys** (eg `equals`, `someProp` etc) as **local variables** to all other modules, without having to :
@@ -41,14 +41,21 @@ and you just want to **import** some of its **exported keys** (eg `equals`, `som
 
 in each module, then you should use this :
 
-
 ```
     [ 'import-keys', {
         'helpers/specHelpers': ['equals', 'deepEquals', 'someProp']
-       }]
+    }]
 ```
 
-that looks up and loads the urequire-rc-`import-keys` RC and passes the options `{}` which has:
+or the equivalent
+
+```
+    [ 'import-keys', {
+        'helpers/specHelpers': 'equals, deepEquals, someProp'
+    }]
+```
+
+that looks up and loads the `urequire-rc-import-keys` ResourceConverter and passes the options `{}` which has:
 
     * each *module* you want to import from, eg `'helpers/specHelpers'`
 
@@ -58,19 +65,19 @@ The variables will be imported to all bundle modules, except the one exporting (
 
 ## Different variable names
 
-If you want to change the name of the variables in the importing modules, for example use `eq` instead of `equals`, the use this syntax:
+If you want to change the name of the variables in the importing modules, for example use the `eq` var instead of `equals` that is the imported key, then use this syntax:
 
 ```
     [ 'import-keys', {
         'helpers/specHelpers': [ ['equals', 'eq'], 'deepEquals', 'someProp'] } ]
 ```
 
-or the equivalent _(but more verbose cause you need corresponding variable for all keys, unless you're in coffee-script :-)_ :
+or the equivalent _(but much more verbose cause you need the corresponding variable for all keys, unless you're in coffee-script ;})_ :
 
 ```
     [ 'import-keys', {
         'helpers/specHelpers': {
-            equals:'eq',
+            equals: 'eq',
             deepEquals: 'deepEquals',
             someProp: 'someProp' } } ];
 ```

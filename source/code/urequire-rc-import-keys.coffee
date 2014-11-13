@@ -13,6 +13,9 @@ module.exports = [
            Declare it in `bundle.dependencies: xxx:`"""
       else
         if not _.isEmpty importedKeyVars
+          if _.isString importedKeyVars
+            importedKeyVars = importedKeyVars.split(',').map (v)->v.trim()
+
           m.mergedCode = '' if not m.mergedCode
           m.mergedCode += "var " +
             _.map(importedKeyVars, (ikv, idxOrKey)->
