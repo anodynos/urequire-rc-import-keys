@@ -1,7 +1,7 @@
 {
   "name": "urequire-rc-import-keys",
   "description": "Imports a module's *exported keys* as *variables* in all other modules.",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "homepage": "http://uRequire.org",
   "author": {
     "name": "Agelos Pikoulas",
@@ -37,7 +37,7 @@
     "node": "0.10.x"
   },
   "peerDependencies": {
-    "urequire": "~0.7.0"
+    "urequire": "~0.7.0-beta.14"
   },
   "dependencies": {
     "lodash": "*"
