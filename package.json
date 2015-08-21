@@ -1,18 +1,13 @@
 {
   "name": "urequire-rc-import-keys",
   "description": "Imports a module's *exported keys* as *variables* in all other modules.",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "homepage": "http://uRequire.org",
   "author": {
     "name": "Agelos Pikoulas",
     "email": "agelos.pikoulas@gmail.com"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://www.opensource.org/licenses/mit-license.php"
-    }
-  ],
+  "licenses":"MIT",
   "keywords": [
     "urequire",
     "import",
@@ -34,10 +29,10 @@
   "main": "./source/code/urequire-rc-import-keys.coffee",
   "preferGlobal": false,
   "engines": {
-    "node": "0.10.x"
+    "node": ">=0.10.x"
   },
   "peerDependencies": {
-    "urequire": "~0.7.0-beta.14"
+    "urequire": "~0.7.0-beta.21"
   },
   "dependencies": {
     "lodash": "*"
